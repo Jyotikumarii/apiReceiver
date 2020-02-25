@@ -16,5 +16,5 @@ public class Customer implements Serializable {
     @Id
     private String orderId;
     private List<Product> products;
-    private Receipient receipient;
+    private Recepient receipient;
 }
