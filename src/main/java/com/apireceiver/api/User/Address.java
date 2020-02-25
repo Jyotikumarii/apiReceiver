@@ -1,20 +1,17 @@
 package com.apireceiver.api.User;
 import lombok.*;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
-
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 
 @Data
 @ToString
-@Entity
 @Component
 public class Address implements Serializable {
     @Id
-    private int id;
+    private String orderId;
     private String addressType;
     private String line1;
     private String line2;

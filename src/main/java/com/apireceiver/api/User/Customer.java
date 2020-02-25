@@ -10,8 +10,8 @@ import java.io.Serializable;
 
 @Data
 @ToString
-@Document
 @Component
+@Document(collection = "customer")
 public class Customer implements Serializable {
     @Id
     private String orderId;

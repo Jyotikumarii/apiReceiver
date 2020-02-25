@@ -9,11 +9,11 @@ import java.util.List;
 
 @Data
 @ToString
-@Document
 @Component
+@Document
 class Recepient implements Serializable {
     @Id
-    private int orderId;
+    private String orderId;
     private BasicProfile basicProfile;
     private List<Address> addresses;
 }

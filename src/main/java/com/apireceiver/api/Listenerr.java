@@ -1,45 +1,50 @@
 package com.apireceiver.api;
 
+import com.apireceiver.api.Services.UserService;
+import com.apireceiver.api.User.Customer;
+import org.springframework.amqp.rabbit.annotation.Queue;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-        import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 @Component
 public class Listenerr {
 
+    @Autowired
+    private UserService userService;
 
     @RabbitListener(queues="Queue")
-    public void Fanoutforq1recievedMessage(String msg) {
-        System.out.println("Queue name is :  queue1");
-
-        System.out.println("Recieved Message: "  + msg);
+    public Customer Fanoutforq1recievedMessage(Customer customer) {
+        UserService.saveDoc(customer);
+        return customer;
     }
     @RabbitListener(queues="Queue1")
-    public void Fanoutforq2recievedMessage(String msg) {
-        System.out.println("Queue name is :  queue2");
+    public Customer Fanoutforq2recievedMessage(Customer customer) {
+        UserService.saveDoc(customer);
+        return customer;
 
-        System.out.println("Recieved Message: "  + msg);
     }
 
     @RabbitListener(queues="Queue2")
-    public void Fanoutforq3recievedMessage(String msg) {
-        System.out.println("Queue name is :  queue2");
+    public Customer Fanoutforq3recievedMessage(Customer customer) {
+        UserService.saveDoc(customer);
+        return customer;
 
-        System.out.println("Recieved Message: "  + msg);
     }
 
 
 
     @RabbitListener(queues="Queue3")
-    public void DirectMessage(String msg) {
-        System.out.println("Queue name is :  Queue3");
+    public Customer DirectMessage(Customer customer) {
+        UserService.saveDoc(customer);
+        return customer;
 
-        System.out.println("Recieved Message: "  + msg);
     }
 
     @RabbitListener(queues="Queue4")
-    public void TopicMessage(String msg) {
-        System.out.println("Queue name is :  Queue4");
+    public Customer TopicMessage(Customer customer) {
+        UserService.saveDoc(customer);
+        return customer;
 
-        System.out.println("Recieved Message: "  + msg);
     }
 
 
